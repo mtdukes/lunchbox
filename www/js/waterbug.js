@@ -255,7 +255,9 @@ var buildCreditString = function() {
     var val = $copyrightHolder.val();
 
     if ($photographer.val() !== '') {
-        if (copyrightOptions[val]['source']) {
+        if (val == 'thirdParty' || val == 'userSubmitted') {
+            creditString =  copyrightOptions[val]['source'] + $photographer.val();
+        } else if (copyrightOptions[val]['source']) {
             creditString = $photographer.val() + '/' + copyrightOptions[val]['source'];
         } else {
             creditString = $photographer.val() + '/' + $source.val();
